@@ -1,10 +1,23 @@
 package com.zipcodewilmington.assessment2.part2;
 
+import org.h2.util.StringUtils;
+
 import java.util.List;
+import java.util.StringJoiner;
 
 public class ListUtility {
     public Boolean add(int i) {
-        return null;
+
+
+        for(int j=0; j < i; j++) {
+
+               j = i;
+
+                return true;
+            }
+
+
+        return false;
     }
 
     public Integer size() {
@@ -16,7 +29,11 @@ public class ListUtility {
     }
 
     public String join() {
-        return null;
+       // String join = StringUtils.join(joinList, "+");
+        StringJoiner joiner = new StringJoiner(", ");
+        joiner.add("");
+        String joined = joiner.toString();
+        return joined;
     }
 
     public Integer mostCommon() {
