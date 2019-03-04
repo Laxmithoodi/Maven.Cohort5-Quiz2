@@ -12,34 +12,51 @@ public class ArrayUtility {
 
         System.arraycopy(array1, 0, merge1, 0, array1.length);
         System.arraycopy(array2, 0, merge1, array1.length, array2.length);
+
         return merge1;
     }
 
-    public Integer[] rotate(Integer[] array, Integer index) {
 
-        Integer[] arr = {index};
-        Collections.rotate(Arrays.asList(array), index);
-        return arr;
+
+    public Integer[] rotate(Integer[] array, Integer index) {
+        Integer[] result = new Integer[array.length];
+
+        for(int i = 0; i < array.length; i++){
+          result [(i+(array.length-index)) % array.length ] = array[i];
+        }
+
+        return result;
+
+
     }
 
     public Integer countOccurrence(Integer[] array1, Integer[] array2, Integer valueToEvaluate) {
 
-        Integer[] count = new Integer[array1.length + array2.length];
 
 
+        int n = array1.length;
+        int a2 = array2.length;
+        Integer numberOfOccurences = 0;
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (array1[i].equals(valueToEvaluate)) {
+                numberOfOccurences = numberOfOccurences + 1;
 
+            }
 
-        Map<Integer, Integer> lookup = new HashMap<>();
-        for (int key : count) {
-            if(lookup.containsKey(key)) {
-                lookup.put(key, lookup.get(key) + 1);
-            } else {
-                lookup.put(key, 1);
+        }
+        for (int i = 0; i < a2; i++) {
+            if (array2[i].equals(valueToEvaluate)) {
+                count = count + 1;
             }
         }
+        numberOfOccurences=numberOfOccurences+count;
+        return numberOfOccurences;
 
-        return valueToEvaluate;
     }
+
+
+
 
     public Integer mostCommon(Integer[] array) {
 
@@ -65,8 +82,3 @@ public class ArrayUtility {
 }
 
 
-
-
-//        return null;
-//    }
-//}

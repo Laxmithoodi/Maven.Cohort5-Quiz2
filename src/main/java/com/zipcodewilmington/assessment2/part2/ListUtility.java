@@ -1,46 +1,82 @@
 package com.zipcodewilmington.assessment2.part2;
 
+import com.j256.ormlite.stmt.query.In;
 import org.h2.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
 public class ListUtility {
-    public Boolean add(int i) {
+    private List<Integer> list = new ArrayList<>();
 
+    public Boolean add(Integer i) {
+        return list.add(i);
 
-        for(int j=0; j < i; j++) {
-
-               j = i;
-
-                return true;
-            }
-
-
-        return false;
     }
+
 
     public Integer size() {
-        return null;
+        return list.size();
     }
+
 
     public List<Integer> getUnique() {
-        return null;
+        ArrayList<Integer> uniqueList = new ArrayList<>();
+        for (Integer i : list) {
+            if (!uniqueList.contains(i))
+                uniqueList.add(i);
+
+        }
+        return uniqueList;
     }
+
 
     public String join() {
-       // String join = StringUtils.join(joinList, "+");
-        StringJoiner joiner = new StringJoiner(", ");
-        joiner.add("");
-        String joined = joiner.toString();
-        return joined;
+        String str = "";
+        for (int i = 0; i < list.size(); i++) {
+            str += list.get(i);
+
+            if (i < list.size() - 1)
+                str += ", ";
+        }
+
+        return str;
     }
 
+
     public Integer mostCommon() {
-        return null;
+        Integer common = list.get(0);
+        int ccommoncount = countOccurance((common));
+        for (Integer curentNUmber : list) {
+            int currentCount = countOccurance((curentNUmber));
+            if (currentCount > ccommoncount) {
+                common = curentNUmber;
+                ccommoncount = currentCount;
+
+            }
+        }
+
+        return common;
+    }
+
+    private int countOccurance(Integer valueToCount) {
+
+        int count = 0;
+
+        for (Integer currentValue : list) {
+
+            if (currentValue == valueToCount) {
+                count++;
+            }
+
+        }
+        return count;
+
     }
 
     public Boolean contains(Integer valueToAdd) {
-        return null;
+        return list.contains(valueToAdd);
     }
+
 }

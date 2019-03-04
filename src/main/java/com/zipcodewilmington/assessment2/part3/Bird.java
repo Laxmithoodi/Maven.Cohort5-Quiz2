@@ -7,7 +7,7 @@ public abstract class Bird implements  Animal{
     }
 
     public void setMigrationMonth(String expected) {
-       // expected = "August";
+
 
     }
 
